@@ -1,0 +1,107 @@
+//#include <dt-bindings/zmk/keys.h>
+#include "my_behaviors.dtsi"
+
+#define REQUIRE_PRIOR_IDLE 250
+#define REQUIRE_PRIOR_IDLE_FAST 150
+#define TIMEOUT_MS_FAST 10
+#define TIMEOUT_MS_SLOW 30
+
+
+// ╭──────┬──────┬──────┬──────┬──────╮  ╭──────┬──────┬──────┬──────┬──────╮
+//           00     01     02     03        04     05     06     07
+// ├──────┼──────┼──────┼──────┼──────┤  ├──────┼──────┼──────┼──────┼──────┤
+//    08     09     10     11     12        13     14     15     16     17
+// ├──────┼──────┼──────┼──────┼──────┤  ├──────┼──────┼──────┼──────┼──────┤
+//    18     19     20     21                      22     23     24     25
+// ╰──────┴──────┼──────┼──────┼──────┤  ├──────┼──────┼──────┴──────┴──────╯
+//                         26     27        28     29
+//                      ╰──────┴──────╯  ╰──────┴──────╯
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+
+        esc {
+            bindings = <&kp ESCAPE>;
+            key-positions = <1 0>;
+            require-prior-idle-ms = <0>;
+            timeout-ms = <TIMEOUT_MS_FAST>;
+        };
+
+        enter {
+            bindings = <&kp ENTER>;
+            key-positions = <16 15 14>;
+            require-prior-idle-ms = <0>;
+            timeout-ms = <TIMEOUT_MS_SLOW>;
+            slow-release;
+        };
+
+        ctrl_backspace {
+            bindings = <&kp LC(BACKSPACE)>;
+            key-positions = <6 7>;
+            require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_FAST>;
+            timeout-ms = <TIMEOUT_MS_FAST>;
+        };
+
+        shift_tab {
+            bindings = <&kp LS(TAB)>;
+            key-positions = <9 10>;
+            require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_FAST>;
+            timeout-ms = <TIMEOUT_MS_FAST>;
+        };
+
+        printscreen {
+            bindings = <&kp PRINTSCREEN>;
+            key-positions = <21 19 10>;
+            require-prior-idle-ms = <REQUIRE_PRIOR_IDLE>;
+            timeout-ms = <TIMEOUT_MS_SLOW>;
+        };
+
+        capslock {
+            bindings = <&kp CAPSLOCK>;
+            key-positions = <20 21>;
+            require-prior-idle-ms = <0>;
+            timeout-ms = <TIMEOUT_MS_FAST>;
+        };
+
+        numpad_divide {
+            bindings = <&kp KP_DIVIDE>;
+            key-positions = <6 15>;
+            layers = <NUMNAV>;
+            require-prior-idle-ms = <0>;
+            timeout-ms = <TIMEOUT_MS_FAST>;
+        };
+
+        numpad_mult {
+            bindings = <&kp KP_ASTERISK>;
+            key-positions = <15 23>;
+            layers = <NUMNAV>;
+            require-prior-idle-ms = <0>;
+            timeout-ms = <TIMEOUT_MS_FAST>;
+        };
+
+        numpad_plus {
+            bindings = <&kp KP_PLUS>;
+            key-positions = <16 24>;
+            layers = <NUMNAV>;
+            require-prior-idle-ms = <0>;
+            timeout-ms = <TIMEOUT_MS_FAST>;
+        };
+
+        numpad_minus {
+            bindings = <&kp KP_MINUS>;
+            key-positions = <16 7>;
+            layers = <NUMNAV>;
+            require-prior-idle-ms = <0>;
+            timeout-ms = <TIMEOUT_MS_FAST>;
+        };
+
+        go_to_params {
+            bindings = <&tog PARAM>;
+            key-positions = <5 6 7>;
+            layers = <FUNCTION PARAM>;
+            require-prior-idle-ms = <REQUIRE_PRIOR_IDLE>;
+            timeout-ms = <TIMEOUT_MS_SLOW>;
+        };
+    };
+};
