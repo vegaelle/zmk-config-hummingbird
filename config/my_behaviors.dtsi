@@ -53,7 +53,7 @@
 #define LTHUMB_HOME   &EZ_SK(LSHIFT)
 #define LTHUMB_REACH  &lth NUMNAV BACKSPACE
 #define RTHUMB_REACH  &lth FUNCTION RETURN
-#define RTHUMB_HOME   &sym_shift_altgr
+#define RTHUMB_HOME   &mth RIGHT_ALT SPACE
 
 // Go to shift odk from the shift key on the ODK layer
 #define DK_LTHUMB_HOME &EZ_SL(ODK_SHIFT)
@@ -93,6 +93,14 @@
       bindings = <&mo>, <&kp>; //&mo = momentary layer
     };
 
+    mth: mt_hold_preferred { // same as mt, but with hold-preferred
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      tapping-term-ms = <SHORT_TAPPING_TERM>;
+      quick-tap-ms = <QUICK_TAP>;
+      flavor = "hold-preferred";
+      bindings = <&kp>, <&kp>;
+    };
     // like ZMK's sticky layer (sl) but with a more robust timing
     osl: one_shot_layer {
       compatible = "zmk,behavior-macro-one-param";
