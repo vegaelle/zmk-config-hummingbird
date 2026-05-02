@@ -51,8 +51,8 @@
 // ======================================
 
 #define LTHUMB_HOME   &EZ_SK(LSHIFT)
-#define LTHUMB_REACH  &lt NUMNAV TAB
-#define RTHUMB_REACH  &worst_space
+#define LTHUMB_REACH  &lth NUMNAV BACKSPACE
+#define RTHUMB_REACH  &lth FUNCTION RETURN
 #define RTHUMB_HOME   &sym_shift_altgr
 
 // Go to shift odk from the shift key on the ODK layer
